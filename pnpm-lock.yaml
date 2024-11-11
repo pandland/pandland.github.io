@@ -26,6 +26,9 @@ importers:
       astro:
         specifier: ^4.16.10
         version: 4.16.10(rollup@4.25.0)(typescript@5.6.3)
+      astro-expressive-code:
+        specifier: ^0.38.3
+        version: 0.38.3(astro@4.16.10(rollup@4.25.0)(typescript@5.6.3))
       sharp:
         specifier: ^0.32.5
         version: 0.32.6
