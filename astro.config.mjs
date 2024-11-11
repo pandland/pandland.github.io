@@ -29,16 +29,16 @@ export default defineConfig({
           label: "Learn",
           autogenerate: { directory: "guides" },
         },
-        {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
-        },
+        //{
+        //label: "Reference",
+        //autogenerate: { directory: "reference" },
+        //},
       ],
       customCss: [
         "@fontsource/prompt/400.css",
         "@fontsource/prompt/600.css",
-				"./src/tailwind.css",
-			],
+        "./src/tailwind.css",
+      ],
     }),
     tailwind({
       applyBaseStyles: false,
