@@ -28,7 +28,16 @@ export default defineConfig({
       sidebar: [
         {
           label: "Learn",
-          autogenerate: { directory: "guides" },
+          items: [
+            { slug: 'guides/getting-started' },
+            { slug: 'guides/modules' },
+            { slug: 'guides/timers' },
+            { slug: 'guides/buffer' },
+            { slug: 'guides/file-system' },
+            { slug: 'guides/tcp-sockets' },
+            { slug: 'guides/uuid' },
+          ],
+          //autogenerate: { directory: "guides" },
         },
         //{
         //label: "Reference",
