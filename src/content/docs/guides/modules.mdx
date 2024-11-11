@@ -1,0 +1,34 @@
+---
+title: Modules
+description: Get started with PandJS
+---
+
+PandJS supports only ES6 modules. CommonJS support is not planned at all.
+
+### Standard library
+
+PandJS exposes modules for interacting with operating system resources like files, sockets etc.
+Every built-in module is prefixed with `std:`.
+
+This is example how to import modules from the standard library:
+
+```js
+import { uuidv4 } from 'std:uuid'
+
+console.log(uuidv4());
+```
+
+### Get meta data of current module
+
+Sometimes you may want to meta data like URL, filename of current module.
+You can find it inside `import.meta` object, which looks like:
+
+```js
+{
+  url: 'file:///home/johndoe/Workspace/hello/sample.js',
+  filename: '/home/johndoe/Workspace/hello/sample.js',
+  dirname: '/home/johndoe/Workspace/hello',
+  main: false,
+  resolve: [Function]
+}
+```

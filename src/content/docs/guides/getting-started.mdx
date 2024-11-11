@@ -1,0 +1,41 @@
+---
+title: Getting started
+description: Get started with PandJS
+---
+import { Tabs, TabItem, Code, Aside } from '@astrojs/starlight/components';
+
+PandJS is a lightweight and open-source JavaScript runtime environment designed for simplicity.
+It offers developers an easy-to-use, free platform for running JavaScript applications outside of the browser.
+
+<Aside type='caution'>
+  Project is still in early stage of development.
+</Aside>
+
+
+### Installing
+
+PandJS is single executable file, you can put it anywhere you want. Run command below to install pre-built binary:
+
+<Tabs>
+  <TabItem label="Linux">
+    <Code code='curl https://pandland.github.io/install | sh' lang='sh' />
+    <Aside>
+      This binary is built and linked against glibc.
+      If you are using  **Alpine Linux**, you may need to install `libc6-compat` package or compile project from source on Alpine.
+    </Aside>
+  </TabItem>
+  <TabItem label="Windows">
+    <Code code='# Not ready yet' lang='sh' />
+  </TabItem>
+  <TabItem label="MacOS">
+    <Code code='# Not ready yet' lang='sh' />
+  </TabItem>
+</Tabs>
+
+### Running scripts
+
+To run JavaScript file, simply run:
+
+```sh
+pand ./sample.js
+```

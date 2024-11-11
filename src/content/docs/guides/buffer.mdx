@@ -1,0 +1,45 @@
+---
+title: Buffer
+description: Get started with PandJS
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+Buffer objects are used to represent a fixed-length sequence of bytes.
+They extends [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) and
+you can often use them interchangeably with some APIs.
+
+<Aside>
+This section is still missing content. Help us to expand this section.
+</Aside>
+
+### Allocate n bytes
+
+Snippet below allocates `1024` bytes:
+
+```js
+const buf = new Buffer(1024);
+```
+
+### Create buffer from string
+
+```js
+const buf = Buffer.from("Hello World");
+```
+
+### Generate random n bytes
+
+```js
+const buf = Buffer.random(16);
+```
+
+### Create string from buffer
+
+```js
+const buf = Buffer.from("Hello");
+
+console.log(buf.toString('utf8'));      // Hello
+console.log(buf.toString('hex'));       // 48656c6c6f
+console.log(buf.toString('base64'));    // SGVsbG8=
+console.log(buf.toString('base64url')); // SGVsbG8
+```

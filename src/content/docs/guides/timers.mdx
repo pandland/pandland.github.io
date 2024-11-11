@@ -1,0 +1,50 @@
+---
+title: Timers
+description: Get started with PandJS
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+You can schedule specific callbacks using timer functions that are available globally.
+
+### setTimeout
+
+Sometimes you might want to delay the execution of a function - you can use `setTimeout` for this task.
+
+```js
+setTimeout(() => {
+  // runs once after 2 seconds
+}, 2000);
+
+setTimeout(() => {
+  // runs once after 50 milliseconds
+}, 50);
+```
+
+### setInterval
+
+This function is similar to `setTimeout`, but runs repeatedly. 
+
+```js
+setInterval(() => {
+  // runs every 3 seconds
+}, 3000);
+```
+
+### clearInterval and clearTimeout
+
+Sometimes you may want to cancel timers - you can easily do it with `clearInterval` and `clearTimeout`.
+
+Both `setInterval` and `setTimeout` return numerical ID and we can use them to clear specific timers.
+
+```js
+const id = setInterval(() => {
+  console.log('Interval callback')
+}, 3000);
+
+clearInterval(id);
+```
+
+<Aside>
+It's worth noting that the pool of IDs used by `setTimeout()` and `setInterval()` are shared, which means you can technically use `clearTimeout()` and `clearInterval()` interchangeably. However, for clarity, you should avoid doing so.
+</Aside>

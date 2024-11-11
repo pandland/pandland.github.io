@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import "@fontsource/prompt/400.css"
+import "@fontsource/prompt/500.css"
+import "@fontsource/prompt/700.css"
+import '../tailwind.css'
+
+import logo from '../assets/pandlogo-light.svg'
+
+---
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>PandJS - Simple JavaScript runtime</title>
+  <meta name="description" content="PandJS is a free and open-source runtime. Project under construction." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PandJS - Simple JavaScript runtime" />
+  <meta property="og:description" content="PandJS is a free and open-source runtime. Project under construction." />
+  <meta property="twitter:title" content="PandJS - Simple JavaScript runtime" />
+  <meta property="twitter:description" content="PandJS is a free and open-source runtime. Project under construction." />
+  <meta name="keywords" content="javascript,pandjs,pand,runtime,v8,async,typescript" />
+</head>
+
+<body class="bg-accent-200/90">
+<div class="flex flex-col items-center">
+  <a href="/" class="m-4 p-2 hover:opacity-85 text-center">
+    <Image height={50} src={logo} alt="logo" />
+  </a>
+  
+  <div class="mt-20">
+    <h1 class="font-black text-6xl leading-none text-center">Simple JavaScript runtime.</h1>
+    <p class="font-normal text-lg text-gray-600 text-center">PandJS is a free and open-source runtime. Project under construction 🐼🚀</p>
+  
+    <div class="flex gap-5 mt-8 w-full justify-center">
+      <a 
+        class="hover:opacity-85 flex items-center justify-center w-24 p-3.5 px-8 font-medium bg-white text-black no-underline rounded-lg border"
+        href="/guides/getting-started"
+      >
+        Read docs
+      </a>
+      <a 
+        class="hover:opacity-85 flex items-center justify-center w-24 p-3.5 px-8 font-medium bg-black text-white no-underline rounded-lg border-none"
+        href="https://github.com/pandland/pand"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+</div>
+</body>

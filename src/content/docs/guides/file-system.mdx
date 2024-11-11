@@ -1,0 +1,99 @@
+---
+title: File system
+description: Get started with PandJS
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+PandJS has a limited set of APIs for reading and writing files.
+All function are heavily inspired by POSIX-like APIs.
+
+<Aside type='caution'> 
+Behavior may vary across platforms; check compatibility and test accordingly to ensure consistent results.
+</Aside>
+
+### Open file
+
+Open and possibly create a file. The exact behavior depends on the flags provided.
+Returns `FileHandle` class instance.
+
+> Check [open(2)](https://man7.org/linux/man-pages/man2/open.2.html) for more details.
+
+```js
+import { open, O_WRONLY, O_CREAT } from 'std:fs';
+
+// will open file as "write-only", if does not exist - create new file.
+const file = await open("./sample.txt", O_WRONLY | O_CREAT);
+```
+
+You can also pass `mode` parameter to `open` function:
+
+```js
+const file = await open("./sample.txt", O_RDWR, 0666);
+```
+
+<Aside>
+Non-absolute paths are resolved relatively to **cwd** (current working directory).
+</Aside>
+
+Available open flags:
+
+- **O_CREAT**: Creates the file if it does not already exist.
+- **O_RDONLY**: Opens the file in read-only mode, allowing data to be read but not written.
+- **O_WRONLY**: Opens the file in write-only mode, allowing data to be written but not read.
+- **O_APPEND**: Opens the file in append mode, with all writes added to the end of the file.
+- **O_EXCL**: Ensures that the file is created exclusively; used with O_CREAT, it will cause an error if the file already exists.
+- **O_RDWR**: Opens the file in read-write mode, allowing both reading from and writing to the file.
+- **O_TRUNC**: Truncates the file’s content to zero length if it already exists and is opened in write or read-write mode.
+
+### Reading bytes from file
+
+This snippet demonstrates the read method by reading up to `1024` bytes from an already-opened file into a buffer.
+The `read` method returns number of bytes actually read. 
+The read method is asynchronous, so it returns the data only once the reading process is complete.
+
+> Check [read(2)](https://man7.org/linux/man-pages/man2/read.2.html) for more details.
+
+```js
+import { open, O_RDONLY } from 'std:fs';
+
+const file = await open("./sample.txt", O_RDONLY);
+const buf = new Buffer(1024);
+const size = await file.read(buf);
+console.log('size:', size);
+console.log(buf);
+
+await file.close();
+```
+
+### Writing bytes to file
+
+Write method will try to write whole provided buffer to the file.
+Returns actually written bytes, so partial writes are possible - make sure you check
+if everything is written.
+
+> Check [write(2)](https://man7.org/linux/man-pages/man2/write.2.html) for more details.
+
+```js
+import { open, O_WRONLY, O_CREAT } from 'std:fs';
+
+const file = await open("./sample.txt", O_WRONLY | O_CREAT);
+const buf = Buffer.from("Hello from write()");
+const size = await file.write(buf);
+console.log('size:', size);
+console.log(buf);
+
+await file.close();
+```
+
+### Close file
+
+Close every file when all operations are completed.
+If you forget to close file, it will lead to resource leak.
+
+> Check [close(2)](https://man7.org/linux/man-pages/man2/close.2.html) for more details.
+
+```js
+...
+await file.close();
+```
