@@ -1,0 +1,84 @@
+---
+title: TCP sockets
+description: Get started with PandJS
+---
+
+In PandJS, `std:net` module provides an asynchronous network API for creating stream-based TCP connections.
+
+import { Aside } from '@astrojs/starlight/components'
+
+<Aside type='caution'>
+DNS lookups are not supported yet.
+Currently only IPv4 addresses are supported.
+</Aside>
+
+<Aside>
+API and method names are still object to change.
+We are looking forward to make it compatible with [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
+from Web API in the future.
+</Aside>
+
+### TCP echo client
+
+In this code below, client will wait for data from the server and will send this data back.
+
+```js
+import { Socket } from 'std:net';
+
+const socket = new Socket();
+
+socket.ondata = (chunk) => {
+  console.log(chunk.toString('utf8'));
+  socket.write(chunk);
+}
+
+socket.onerror = (err) => {
+  console.log("Got error:", err);
+}
+
+socket.onclose = () => {
+  console.log("connection closed?", socket.destroyed);
+}
+
+await socket.connect('127.0.0.1', 8000);
+```
+
+### TCP echo server
+
+```js
+import { Server } from 'std:net';
+
+const server = new Server();
+
+server.onconnection = function(socket) {
+  socket.ondata = (chunk) => {
+    console.log(chunk.toString('utf8'));
+    socket.write(chunk);
+    socket.shutdown();
+  };
+
+  socket.onerror = (err) => {
+    console.log(err);
+  }
+
+  socket.onclose = () => {
+    console.log("connection closed");
+  };
+}
+
+server.listen(5000);
+console.log(`Starting server on port: ${server.port}`);
+```
+
+### Closing TCP connections
+
+There is 2 ways to close connection:
+
+1. Graceful with `socket.shutdown` - prefered way of closing connections.
+    ```js
+    socket.shutdown();
+    ```
+2. Aggresive with `socket.destroy` - useful during errors and timeouts.
+    ```js
+    socket.destroy();
+    ```

@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://pandland.github.io',
   integrations: [
     starlight({
       title: "PandJS",
@@ -22,7 +23,7 @@ export default defineConfig({
         github: "https://github.com/pandland/pand",
       },
       editLink: {
-        baseUrl: "https://github.com/pandland/pandland.github.io/edit/v2/",
+        baseUrl: "https://github.com/pandland/pandland.github.io/edit/main/",
       },
       sidebar: [
         {
