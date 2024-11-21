@@ -30,6 +30,7 @@ export default defineConfig({
           label: "Learn",
           items: [
             { slug: 'guides/getting-started' },
+            { slug: 'guides/runtime' },
             { slug: 'guides/modules' },
             { slug: 'guides/timers' },
             { slug: 'guides/buffer' },
