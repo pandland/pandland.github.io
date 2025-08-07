@@ -86,6 +86,31 @@ console.log(buf);
 await file.close();
 ```
 
+### Fstat
+
+Get file status information, such as size (in bytes), permissions, and timestamps.
+Returns an object with file metadata.
+
+<Aside type='caution'> 
+Currently only `size` field is supported.
+</Aside>
+
+> Check [fstat(3p)](http://man7.org/linux/man-pages/man3/fstat.3p.html) for more details.
+
+```js
+import { open, O_RDONLY } from 'std:fs';
+
+const file = await open("./sample.txt", O_RDONLY);
+const stat = await file.fstat();
+console.log('File size:', stat.size);
+
+// You can use it to read whole file
+const buf = new Buffer(stat.size);
+const size = await file.read(buf);
+
+await file.close();
+```
+
 ### Close file
 
 Close every file when all operations are completed.

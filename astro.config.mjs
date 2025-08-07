@@ -19,9 +19,13 @@ export default defineConfig({
         alt: "PandJS logo",
         replacesTitle: true,
       },
-      social: {
-        github: "https://github.com/pandland/pand",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/pandland/pand",
+        }
+      ],
       editLink: {
         baseUrl: "https://github.com/pandland/pandland.github.io/edit/main/",
       },
