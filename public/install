@@ -1,5 +1,5 @@
 #!/bin/sh
 
-DOWNLOAD="https://github.com/pandland/pand/releases/download/v0.0.0-fs/pand"
+DOWNLOAD="https://github.com/pandland/pand/releases/download/v0.0.0-bachelor/pand"
 
 curl -L -o pand "$DOWNLOAD"  && chmod +x ./pand
