@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout repository using git
         uses: actions/checkout@v4
       - name: Enable Corepack & activate pnpm
         run: |
@@ -26,12 +26,12 @@ jobs:
           corepack prepare pnpm@latest --activate
       - name: Approve pnpm build scripts for CI
         run: pnpm approve-builds --all
-      - name: Install, build, and upload your site
+      - name: Install, build, and upload docs site
         uses: withastro/action@v3
         with:
           path: .
-          node-version: 24
-          package-manager: pnpm@latest
+          node-version: 22
+          package-manager: pnpm@9
 
   deploy:
     needs: build
